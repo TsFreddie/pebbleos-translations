@@ -1,0 +1,11 @@
+[general]
+contrib=contrib-body-requires-signed-off-by,contrib-disallow-cleanup-commits
+
+[title-match-regex]
+regex=^[a-z0-9/_]+: .*
+
+[title-max-length]
+line-length=100
+
+[body-max-line-length]
+line-length=100

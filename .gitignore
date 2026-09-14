@@ -1,0 +1,5 @@
+.DS_Store
+*.mo
+*.pbl
+*.pot
+__pycache__/
