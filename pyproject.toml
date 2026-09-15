@@ -1,0 +1,16 @@
+[project]
+name = "pebbleos-translations"
+version = "0.1.0"
+description = "Catalog maintenance and universal Pebble language-pack tools"
+requires-python = ">=3.9"
+dependencies = [
+    "freetype-py==2.5.1",
+]
+
+[dependency-groups]
+dev = [
+    "ruff==0.16.7",
+]
+
+[tool.uv]
+package = false
