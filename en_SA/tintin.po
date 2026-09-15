@@ -1,0 +1,13 @@
+# English strings with Arabic glyph support.
+msgid ""
+msgstr ""
+"Project-Id-Version: 6.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-09-15 00:00+0000\n"
+"Last-Translator: PebbleOS contributors\n"
+"Language-Team: English + Arabic glyphs\n"
+"Language: en_SA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Name: English + العربية\n"

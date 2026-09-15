@@ -16,6 +16,7 @@ from pack_format import FONT_SLOTS, MAX_GLYPH_SIZE, serialize
 LANG_ROOT = Path(__file__).resolve().parent.parent
 LANG_MAP = "lang_map.json"
 CATALOG = "tintin.po"
+INCOMPLETE = "INCOMPLETE"
 
 
 def lang_dir(lang):
@@ -79,6 +80,8 @@ def validate_map(resource_map):
 
 def pack_lang(lang, output):
     source = lang_dir(lang)
+    if (source / INCOMPLETE).is_file():
+        raise ValueError(f"Locale {lang} is marked incomplete")
     resource_map = json.loads((source / LANG_MAP).read_text())
     validate_map(resource_map)
     output = Path(output)
@@ -127,7 +130,11 @@ def pack_lang(lang, output):
 
 def pack_all_langs(output):
     for source in sorted(LANG_ROOT.iterdir()):
-        if source.is_dir() and (source / LANG_MAP).is_file():
+        if (
+            source.is_dir()
+            and (source / LANG_MAP).is_file()
+            and not (source / INCOMPLETE).is_file()
+        ):
             pack_lang(source.name, output)
 
 

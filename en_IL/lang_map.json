@@ -1,68 +1,58 @@
 {
     "strings": {
-        "lang": "ar_SA",
+        "lang": "en_IL",
         "name": "STRINGS",
-        "file": ""
+        "file": "tintin.po"
     },
     "fonts": [{
         "name": "GOTHIC_14_EXTENDED",
-        "file": "Vazirmatn-Regular.ttf",
-        "characterList": "arabic_codepoints.json",
-        "pixelHeight": 12,
+        "file": "Heebo-Regular.ttf",
+        "characterList": "hebrew_codepoints.json",
         "extended": true
     }, {
         "name": "GOTHIC_14_BOLD_EXTENDED",
-        "file": "Vazirmatn-Bold.ttf",
-        "characterList": "arabic_codepoints.json",
-        "pixelHeight": 12,
+        "file": "Heebo-Bold.ttf",
+        "characterList": "hebrew_codepoints.json",
         "extended": true
     }, {
         "name": "GOTHIC_18_EXTENDED",
-        "file": "Vazirmatn-Regular.ttf",
-        "characterList": "arabic_codepoints.json",
-        "pixelHeight": 14,
+        "file": "Heebo-Regular.ttf",
+        "characterList": "hebrew_codepoints.json",
         "extended": true
     }, {
         "name": "GOTHIC_18_BOLD_EXTENDED",
-        "file": "Vazirmatn-Bold.ttf",
-        "characterList": "arabic_codepoints.json",
-        "pixelHeight": 14,
+        "file": "Heebo-Bold.ttf",
+        "characterList": "hebrew_codepoints.json",
         "extended": true
     }, {
         "name": "GOTHIC_24_EXTENDED",
-        "file": "Vazirmatn-Regular.ttf",
-        "characterList": "arabic_codepoints.json",
-        "pixelHeight": 17,
+        "file": "Heebo-Regular.ttf",
+        "characterList": "hebrew_codepoints.json",
         "extended": true
     }, {
         "name": "GOTHIC_24_BOLD_EXTENDED",
-        "file": "Vazirmatn-Bold.ttf",
-        "characterList": "arabic_codepoints.json",
-        "pixelHeight": 17,
+        "file": "Heebo-Bold.ttf",
+        "characterList": "hebrew_codepoints.json",
         "extended": true
     }, {
         "name": "GOTHIC_28_EXTENDED",
-        "file": "Vazirmatn-Regular.ttf",
-        "characterList": "arabic_codepoints.json",
-        "pixelHeight": 20,
+        "file": "Heebo-Regular.ttf",
+        "characterList": "hebrew_codepoints.json",
         "extended": true
     }, {
         "name": "GOTHIC_28_BOLD_EXTENDED",
-        "file": "Vazirmatn-Bold.ttf",
-        "characterList": "arabic_codepoints.json",
-        "pixelHeight": 20,
+        "file": "Heebo-Bold.ttf",
+        "characterList": "hebrew_codepoints.json",
         "extended": true
     }, {
         "name": "GOTHIC_36_EXTENDED",
-        "file": "Vazirmatn-Regular.ttf",
-        "characterList": "arabic_codepoints.json",
-        "pixelHeight": 20,
+        "file": "Heebo-Regular.ttf",
+        "characterList": "hebrew_codepoints.json",
         "extended": true
     }, {
         "name": "GOTHIC_36_BOLD_EXTENDED",
-        "file": "Vazirmatn-Bold.ttf",
-        "characterList": "arabic_codepoints.json",
-        "pixelHeight": 20,
+        "file": "Heebo-Bold.ttf",
+        "characterList": "hebrew_codepoints.json",
         "extended": true
     }, {
         "name": "BITHAM_18_LIGHT_SUBSET_EXTENDED",

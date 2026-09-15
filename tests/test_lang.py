@@ -82,10 +82,19 @@ class LanguageTest(unittest.TestCase):
     def test_pack_all_skips_non_pack_directories(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
-            for name in ("fr_FR", ".git", "tools", "tests", "ja_JP", "en_US"):
+            for name in (
+                "fr_FR",
+                ".git",
+                "tools",
+                "tests",
+                "ja_JP",
+                "uk_UA",
+                "en_US",
+            ):
                 (root / name).mkdir()
-            for name in ("fr_FR", "en_US"):
+            for name in ("fr_FR", "uk_UA", "en_US"):
                 (root / name / commands.LANG_MAP).write_text("{}")
+            (root / "uk_UA" / commands.INCOMPLETE).write_text("Missing fonts\n")
             with (
                 patch.object(commands, "LANG_ROOT", root),
                 patch.object(commands, "pack_lang") as pack,
@@ -94,6 +103,18 @@ class LanguageTest(unittest.TestCase):
             self.assertEqual(
                 pack.call_args_list, [call("en_US", "dist"), call("fr_FR", "dist")]
             )
+
+    def test_pack_lang_rejects_incomplete_locale(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "uk_UA"
+            source.mkdir()
+            (source / commands.INCOMPLETE).write_text("Missing fonts\n")
+            with (
+                patch.object(commands, "LANG_ROOT", root),
+                self.assertRaisesRegex(ValueError, "marked incomplete"),
+            ):
+                commands.pack_lang("uk_UA", root / "out")
 
     def test_font_aliases_and_map_order(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -166,15 +187,15 @@ class LanguageTest(unittest.TestCase):
                 )
 
     def test_universal_font_limit_has_actionable_error(self):
-        entry = json.loads((ROOT / "he_IL/lang_map.json").read_text())["fonts"][0]
+        entry = json.loads((ROOT / "en_IL/lang_map.json").read_text())["fonts"][0]
         entry["pixelHeight"] = 200
         with self.assertRaisesRegex(ValueError, "universal limit.*Adjust the font"):
-            commands.build_font(ROOT / "he_IL", entry, None)
+            commands.build_font(ROOT / "en_IL", entry, None)
 
     def test_compressed_font(self):
-        entry = json.loads((ROOT / "he_IL/lang_map.json").read_text())["fonts"][0]
+        entry = json.loads((ROOT / "en_IL/lang_map.json").read_text())["fonts"][0]
         entry["compress"] = "RLE4"
-        data = commands.build_font(ROOT / "he_IL", entry, None)
+        data = commands.build_font(ROOT / "en_IL", entry, None)
         self.assertEqual(data[0], 3)
         self.assertTrue(data[9] & 2)
 
@@ -187,7 +208,7 @@ class LanguageTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             env = os.environ.copy()
             env.pop("PYTHONPATH", None)
-            for locale in ("en_US", "fr_FR", "he_IL"):
+            for locale in ("en_US", "fr_FR", "en_IL"):
                 subprocess.run(
                     [
                         sys.executable,
@@ -205,7 +226,7 @@ class LanguageTest(unittest.TestCase):
                 contents = unpack((Path(directory) / f"{locale}.pbl").read_bytes())
                 if locale == "fr_FR":
                     self.assertTrue(contents[0])
-                if locale == "he_IL":
+                if locale == "en_IL":
                     self.assertTrue(contents[1])
             self.assertEqual(len(list(Path(directory).iterdir())), 3)
 
